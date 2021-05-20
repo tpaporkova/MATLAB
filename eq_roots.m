@@ -7,6 +7,7 @@ z = ginput(1);
 hold on
 plot(zr,fr,'r*',z(1),z(2),'g*');
 hold off
+
 %%
 x = linspace(0,2*pi,100);
 f = 'sin(x.*(1-x))';
@@ -17,6 +18,7 @@ z = ginput(1);
 hold on
 plot(zr,fr,'r*',z(1),z(2),'g*');
 hold off
+
 %%
 x = linspace(0,4*pi,100);
 f = 'x.*sin(x) - cos(x)';
@@ -27,6 +29,7 @@ z = ginput(1);
 hold on
 plot(zr,fr,'r*',z(1),z(2),'g*');
 hold off
+
 %%
 x = linspace(0,4*pi,100);
 f = '5*exp(-0.1*x).*sin(x) - 0.1*x';
@@ -37,6 +40,7 @@ z = ginput(2);
 hold on
 plot(zr,fr,'r*',z(2),z(4),'g*');
 hold off
+
 %%
 syms x
 f = x*x + 1;
