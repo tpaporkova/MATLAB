@@ -1,9 +1,11 @@
 T1 = readtable("fileExcel.xlsx","PreserveVariableNames",true);
-Roles = ["Руководитель"; "Исполнитель"];
+T2 = table;
 employers_names = join(T1.("ФИО")(find(T1.("Роль") == "Руководитель")),"; ");
 employees_names = join(T1.("ФИО")(find(T1.("Роль") == "Исполнитель")),"; ");
-People = [employers_names;employees_names];
-T2 = table(Roles, People);
+people = [employers_names;employees_names];
+roles = ["Руководитель"; "Исполнитель"];
+T2.("Роли") = roles;
+T2.("Люди") = people;
 writetable(T2, "outFile.xlsx")
 
 %%
