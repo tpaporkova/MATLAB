@@ -18,18 +18,32 @@ plot(x,f);
 grid on
 [x_m,y_m] = fminbnd(@extr2,0,2)
 
-%%
+
+%% UPDATED
 x = linspace(0,1,100);
-a = 4;
+a = [2; 4; 8; 12; 18];
 f = x.^a.*log(x);
-plot(x,f);
+plot(x,f)
 grid on
-[x_m,y_m] = fminbnd(@extr3,0,1)
+hold on
+for i = 1:length(a)
+    y = @(x) x.^a(i).*log(x);
+    x_m(i) = fminbnd(y,0,1);
+plot(x_m(i),y(x_m(i)),'*')
+end
+hold off
 
 %%
-x = linspace(-1,1,100);
-a = 3; b = 7;
+x = linspace(-1,1,1000000);
+a = [0; -0.1; 0.3];
+b = [1; 0; -1];
 f = x.^a.*exp(-1*b.*x);
 plot(x,f);
 grid on
-[x_m,y_m] = fminbnd(@extr4,-1,1)
+hold on
+for i = 1:length(a)
+    y = @(x) x.^a(i).*exp(-1*b(i).*x);
+    x_m(i) = fminbnd(y,-0.3,0.3);
+    plot(x_m(i),y(x_m(i)),'*')
+end
+hold off
