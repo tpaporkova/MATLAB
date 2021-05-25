@@ -58,3 +58,41 @@ a = pi;
 r = sqrt(x.^2 + y.^2);
 z = ((2.*besselj(1,a.*r)./r)).^2;
 mesh(x,y,z)
+
+%% UPDATED
+t = 0:0.01:6*pi; t0 = 7*pi/2;
+x = sin(t);
+y = 2*cos(t);
+x0 = sin(t0);
+y0 = 2*cos(t0);
+plot3(x,y,t)
+hold on
+grid on
+xlabel('x'); ylabel('y'); zlabel('z');
+plot3(x0,y0,t0,'*')
+line([-1,x0],[-2,y0],[0,t0])
+hold off
+
+%%
+z = 20-x.^2-y.^2;
+Lx = linspace(-pi,pi,40);
+Ly = linspace(-pi,pi,50);
+[x,y] = meshgrid(Lx,Ly);
+surfc(x,y,z);
+xlabel('x'); ylabel('y'); zlabel('z');
+hold on
+
+x0 = 0; x1 = 2*x0;
+y0 = -1; y1 = 2*y0;
+z0 = 20-x0.^2-y0.^2; z1 = 1;
+plot3([x0,x1],[y0,y1],[z0,z1])
+
+R = 0.1; fi = 0:0.01:6*pi;
+r = R*fi;
+x2 = r.*cos(fi);
+y2 = r.*sin(fi);
+z2 = 20-x2.^2-y2.^2;
+z3 = zeros(length(z2));
+plot3(x2,y2,z2,"Color",'black')
+plot3(x2,y2,z3,"Color",'black')
+hold off
