@@ -30,3 +30,58 @@ P = [1 1 -1 -1];
 %%
 P = [1 0 0 0 -1];
 [r, p, k] = residue([1 0 0], P)
+
+
+%% UPDATED
+n = input("Enter the number");
+y = x.^(2*n)-n*x.^(n+1)+n*x.^(n-1)-1;
+disp(roots(y));
+plot(x,y)
+grid on
+ylim([-5 5])
+
+%%
+x = linspace(1,20,100);
+P = 1./x;
+r = roots(P);
+x1 = linspace(min(r),max(r),100);
+if imag(r) == 0
+    plot(x1,P)  
+    grid on
+else
+    disp("roots are complex")
+end
+%%
+x = [-1 0 1 2 3];
+y = [6 5 0 3 2];
+xP = -1:0.01:3;
+P = interp1(x,y,xP,'spline');
+plot(xP,P)
+grid on
+
+%%
+n = input("Enter the number");
+M = randi(n,n);
+disp("Answer:")
+if poly(M) == charpoly(M)
+    disp("yes!!!")
+else
+    disp("no :(")
+end
+
+%%
+f = [1 2 -1 -4 -2];
+g = [1 1 -1 -2 -2];
+[G,S,T] = gcd(f,g);
+disp("Greatest common divisor G");
+disp(G);
+disp("Linear combination S,T");
+disp(S); disp(T)
+%%
+f = [1 3 1 1 3 1];
+g = [0 1 2 0 1 2];
+[G,S,T] = gcd(f,g);
+disp("Greatest common divisor G");
+disp(G);
+disp("Linear combination S,T");
+disp(S); disp(T)
